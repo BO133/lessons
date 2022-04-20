@@ -1,31 +1,35 @@
 number = rand(17)
 
-def guess(number)
-choice = gets.chomp.to_i
+puts 'Загадано число от 0 до 16, отгадайте какое?'
 
-	if choice.to_i == number.to_i
-		puts "Ура, вы выиграли!"
-		abort
-	end
+def distance(choice, number)
+  result = []
 
-	if choice.to_i > number.to_i
-		puts "Нужно меньше"
-	else
-		puts "Нужно больше"
-	end
+  if (choice.to_i - number.to_i).abs < 3
+    result << 'Тепло'
+  else
+    result << 'Холодно'
+  end
 
-	if (choice.to_i - number.to_i).abs < 3
-		puts "Тепло"
-	else
-		puts "Холодно"
-	end
+  if choice.to_i > number.to_i
+    result << 'Нужно меньше'
+  else
+    result << 'Нужно больше'
+  end
 
+  result.join('. ')
 end
 
-puts "Загадано число от 0 до 16, отгадайте какое?"
+3.times do
+  choice = gets.chomp.to_i
 
-#choice = gets.chomp.to_i
+  if choice == number
+    puts 'Ура, вы выиграли!'
+    return
+  else
+    puts distance(choice, number)
+  end
+end
 
-guess(number)
-guess(number)
-guess(number)
+puts 'Вы проиграли'
+puts "Загадано было #{number}"
