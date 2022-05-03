@@ -2,10 +2,10 @@ puts "Врага какого персонажа вы хотите узнать?
 
 character = gets.chomp.downcase
 
-case
-when character == "batman" || character == "бетмен" || character == "бетмен"
+case character
+when "batman", "бэтмен", "бетмен"
   puts "Джокер"
-when character == "frodo" || character == "фродо"
+when "frodo", "фродо"
   puts "Саурон"
 else
   puts "Не удалось найти врага"

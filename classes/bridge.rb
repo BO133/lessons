@@ -1,5 +1,4 @@
 class Bridge
-
   def initialize
     puts "Мост создан"
     @opened = false
@@ -13,5 +12,4 @@ class Bridge
   def is_opened?
     return @opened
   end
-
 end

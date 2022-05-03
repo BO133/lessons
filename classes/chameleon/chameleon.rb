@@ -1,5 +1,4 @@
 class Chameleon
-  
   def initialize(colour)
     @colour = colour
   end
@@ -13,5 +12,4 @@ class Chameleon
     puts "Теперь я #@colour"
     puts "Каким мне стать?"
   end
-
 end

@@ -1,5 +1,4 @@
 class Human
-
   def initialize(name, family_name, age)
     @name = name
     @family_name = family_name
@@ -17,9 +16,9 @@ class Human
 
   def show_full_name
     if @age >= 60
-    return "#@name #@family_name"
+    "#@name #@family_name"
     else
-    return "#@name"
+    "#@name"
     end
   end
 
@@ -27,8 +26,7 @@ class Human
     @movie = movie
   end
 
-  def show_movie
-    return @movie
+  def movie
+    @movie
   end
-
 end

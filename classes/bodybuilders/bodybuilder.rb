@@ -1,5 +1,4 @@
 class Bodybuilder
-
   def initialize(alpha, beta, gamma)
     @alpha = alpha
     @beta = beta
@@ -7,12 +6,10 @@ class Bodybuilder
   end
 
   def gym(muscle)
-    if muscle == "Бицепс"
-      @alpha += 1
-    elsif muscle == "Трицепс"
-      @beta += 1
-    elsif muscle == "Дельтовидка"
-      @gamma += 1
+    case muscle
+    when "Бицепс" then @alpha += 1
+    when "Трицепс" then @beta += 1
+    when "Дельтовидка" then @gamma += 1
     end
   end
 
@@ -22,5 +19,4 @@ class Bodybuilder
     puts "Дельтовидка #@gamma"
     puts
   end
-
 end

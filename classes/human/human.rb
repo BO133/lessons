@@ -1,5 +1,4 @@
 class Human
-
   def initialize(name, family_name, age)
     @name = name
     @family_name = family_name
@@ -21,5 +20,4 @@ class Human
     puts "#@name"
     end
   end
-
 end

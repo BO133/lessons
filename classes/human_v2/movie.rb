@@ -1,15 +1,14 @@
 class Movie
-  def initialize(movie, producer)
-    @movie = movie
+  def initialize(title, producer)
+    @title = title
     @producer = producer
   end
 
-  def show_film
-    return @movie
+  def title
+    @title
   end
 
-  def show_producer
-    return @producer
+  def producer
+    @producer
   end
-  
 end
