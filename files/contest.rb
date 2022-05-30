@@ -1,13 +1,8 @@
 answers_path = './data/answers.txt'
 questions_path = './data/questions.txt'
 
-answers = File.new(answers_path)
-answers_all = answers.readlines
-answers.close
-
-questions = File.new(questions_path)
-questions_all = questions.readlines
-questions.close
+answers_all = File.readlines(answers_path)
+questions_all = File.readlines(questions_path)
 
 count_of_right_answers = 0
 puts "Мини викторина. Ответь на вопросы:"
