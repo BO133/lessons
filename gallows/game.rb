@@ -6,6 +6,7 @@ class Game
     @good_letters = []
     @bad_letters = []
     @status = 0
+    puts @letters
   end
 
   def get_letters(slovo)
@@ -21,7 +22,6 @@ class Game
     while letter == "" do
       letter = STDIN.gets.encode("UTF-8").chomp
     end
-
     next_step(letter)
   end
 
@@ -34,43 +34,33 @@ class Game
       return
     end
 
-  #   if @letters.include?(bukva) ||
-  #     (bukva == 'е' && @letters.include?('ё')) ||
-  #     (bukva == 'ё' && @letters.include?('е')) ||
-  #     (bukva == 'и' && @letters.include?('й')) ||
-  #     (bukva == 'й' && @letters.include?('и'))
-  #     @good_letters << bukva
-
-  #     if bukva == 'е'
-  #       @good_letters << 'ё'
-  #     end
-
-  #     if bukva == 'ё'
-  #       @good_letters << 'е'
-  #     end
-
-  #     if bukva == 'и'
-  #       @good_letters << 'й'
-  #     end
-
-  #     if bukva == 'й'
-  #       @good_letters << 'и'
-  #     end
-
-  #     if (@letters - @good_letters).empty?
-  #       return 1
-  #     else
-  #       return 0
-  #     end
-  #   else
-  #     @bad_letters << bukva
-  #     return -1
-  #   end
-
-    if @letters.include?(bukva)
+    if @letters.include?(bukva) ||
+      (bukva == 'е' && @letters.include?('ё')) ||
+      (bukva == 'ё' && @letters.include?('е')) ||
+      (bukva == 'и' && @letters.include?('й')) ||
+      (bukva == 'й' && @letters.include?('и'))
       @good_letters << bukva
-      if @good_letters.size == @letters.uniq.size
+
+      if bukva == 'е'
+        @good_letters << 'ё'
+      end
+
+      if bukva == 'ё'
+        @good_letters << 'е'
+      end
+
+      if bukva == 'и'
+        @good_letters << 'й'
+      end
+
+      if bukva == 'й'
+        @good_letters << 'и'
+      end
+
+      if (@letters - @good_letters).empty?
         @status = 1
+      else
+        @status = 0
       end
     else
       @bad_letters << bukva
@@ -80,25 +70,4 @@ class Game
       end
     end
   end
-
-  # def letters
-  #   @letters
-  # end
-
-  # def good_letters
-  #   @good_letters
-  # end
-
-  # def bad_letters
-  #   @bad_letters
-  # end
-
-  # def status
-  #   @status
-  # end
-
-  # def errors
-  #   @errors
-  # end
-
 end

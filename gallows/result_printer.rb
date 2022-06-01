@@ -28,7 +28,7 @@ class ResultPrinter
     if game.errors >= 7
       puts "Вы проиграли"
     else
-      if game.letters.uniq.size == game.good_letters.size
+      if game.status == 1
         puts "поздравляем, вы выиграли!\n\n"
       else
         puts "У вас осталось попыток: " + (7-game.errors).to_s
