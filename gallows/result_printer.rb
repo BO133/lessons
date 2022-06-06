@@ -47,11 +47,11 @@ class ResultPrinter
       end
     end
 
-    return result
+    result
   end
 
   def cls
-    system "clear" or systerm "cls"
+    system "clear"
   end
 
   def print_gallow(errors)

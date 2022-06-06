@@ -5,8 +5,6 @@ class WordReader
       lines = f.readlines
       f.close
       return lines.sample.chomp
-    else
-      return nil
     end
   end
 end

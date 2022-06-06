@@ -1,7 +1,7 @@
 class Game
   attr_accessor :letters, :errors, :good_letters, :bad_letters, :status
-  def initialize(slovo)
-    @letters = get_letters(slovo)
+  def initialize(word)
+    @letters = get_letters(word)
     @errors = 0
     @good_letters = []
     @bad_letters = []
@@ -9,11 +9,11 @@ class Game
     puts @letters
   end
 
-  def get_letters(slovo)
-    if (slovo == nil || slovo == "")
+  def get_letters(word)
+    if (word == nil || word == "")
       abort "Вы не ввели слово"
     end
-    return slovo.split("")
+    word.split("")
   end
 
   def ask_next_letter
@@ -25,37 +25,24 @@ class Game
     next_step(letter)
   end
 
-  def next_step(bukva)
-    if @status == -1 || @status == 1
+  def next_step(letter)
+    return if @status == -1 || @status == 1
+
+    if @good_letters.include?(letter) || @bad_letters.include?(letter)
       return
     end
 
-    if @good_letters.include?(bukva) || @bad_letters.include?(bukva)
-      return
-    end
+    if @letters.include?(letter) ||
+      (letter == 'е' && @letters.include?('ё')) ||
+      (letter == 'ё' && @letters.include?('е')) ||
+      (letter == 'и' && @letters.include?('й')) ||
+      (letter == 'й' && @letters.include?('и'))
+      @good_letters << letter
 
-    if @letters.include?(bukva) ||
-      (bukva == 'е' && @letters.include?('ё')) ||
-      (bukva == 'ё' && @letters.include?('е')) ||
-      (bukva == 'и' && @letters.include?('й')) ||
-      (bukva == 'й' && @letters.include?('и'))
-      @good_letters << bukva
-
-      if bukva == 'е'
-        @good_letters << 'ё'
-      end
-
-      if bukva == 'ё'
-        @good_letters << 'е'
-      end
-
-      if bukva == 'и'
-        @good_letters << 'й'
-      end
-
-      if bukva == 'й'
-        @good_letters << 'и'
-      end
+      @good_letters << 'ё' if letter == 'е'
+      @good_letters << 'е' if letter == 'ё'
+      @good_letters << 'й' if letter == 'и'
+      @good_letters << 'и' if letter == 'й'
 
       if (@letters - @good_letters).empty?
         @status = 1
@@ -63,7 +50,7 @@ class Game
         @status = 0
       end
     else
-      @bad_letters << bukva
+      @bad_letters << letter
       @errors += 1
       if @errors >= 7
         @status = -1
