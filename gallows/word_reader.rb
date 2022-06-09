@@ -4,7 +4,7 @@ class WordReader
       f = File.new(file_name)
       lines = f.readlines
       f.close
-      return lines.sample.chomp
+      lines.sample.chomp
     end
   end
 end

@@ -1,11 +1,13 @@
 class ResultPrinter
+  MISTAKES_LIMIT = 7
+  GALLOW_IMAGES_COUNT = Dir['image/**/*'].count {|file| File.file?(file)} -1
 
   def initialize
     @status_image = []
     current_path = File.dirname(__FILE__)
     counter = 0
 
-    while counter <= 7
+    while counter <= MISTAKES_LIMIT
       file_name = current_path + "/image/#{counter}.txt"
       if File.exist?(file_name)
         file = File.new(file_name)
@@ -25,7 +27,7 @@ class ResultPrinter
 
     print_gallow(game.errors)
 
-    if game.errors >= 7
+    if game.errors >=  MISTAKES_LIMIT
       puts "Вы проиграли"
     else
       if game.status == 1

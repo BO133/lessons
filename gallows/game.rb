@@ -6,7 +6,6 @@ class Game
     @good_letters = []
     @bad_letters = []
     @status = 0
-    puts @letters
   end
 
   def get_letters(word)

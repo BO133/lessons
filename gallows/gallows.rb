@@ -8,9 +8,10 @@ printer = ResultPrinter.new
 
 reader = WordReader.new
 
-slovo = reader.read_from_file(current_path + "/data/words.txt")
+word = reader.read_from_file(current_path + "/data/words.txt")
 
-game = Game.new(slovo)
+game = Game.new(word)
+puts game.get_letters(word)
 
 while game.status == 0 do
   printer.print_status(game)
